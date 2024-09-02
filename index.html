@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายการเฟอร์นิเจอร์และของใช้จำเป็น</title>
+    <style>
+        /* CSS ของคุณที่ปรับปรุงแล้ว */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #3f51b5;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.8em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #3f51b5;
+            font-weight: bold;
+        }
+
+        h2 {
+            cursor: pointer;
+            padding: 12px;
+            background: #9fa8da;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background 0.3s, transform 0.3s, border-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #9fa8da;
+        }
+
+        h2:hover {
+            background: #7986cb;
+            transform: scale(1.05);
+        }
+
+        h2.completed {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0 0 0 20px;
+            display: none;
+        }
+
+        ul li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        ul.active {
+            display: block;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #3f51b5;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        #overall-percentage {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3f51b5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            header {
+                font-size: 1.4em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        รายการเฟอร์นิเจอร์และของใช้จำเป็น
+    </header>
+
+    <div class="container">
+        <h2 onclick="toggleList(this)">1. ห้องนั่งเล่น/รับแขก <span class="percentage">0%</span> <button onclick="addItem('living-room', event)">เพิ่มรายการ</button></h2>
+        <ul id="living-room">
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">โซฟา - เลือกโซฟาที่มีขนาดเหมาะสมกับพื้นที่และให้ความสบาย <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">โต๊ะกลาง - สำหรับวางสิ่งของและตกแต่ง <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">ชั้นวางทีวี - ใช้เก็บอุปกรณ์เสริมและเพิ่มความเป็นระเบียบ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">โต๊ะข้าง - ใช้สำหรับวางของเล็ก ๆ น้อย ๆ หรือเครื่องดื่ม <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">พรม - เพิ่มความอบอุ่นและความสวยงาม <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">โคมไฟตั้งพื้น/ตั้งโต๊ะ - ให้แสงสว่างและเสริมบรรยากาศ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('living-room')">ผ้าม่าน/มู่ลี่ - ควบคุมแสงและความเป็นส่วนตัว <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+        </ul>
+
+        <h2 onclick="toggleList(this)">2. ห้องนอน/แต่งตัว <span class="percentage">0%</span> <button onclick="addItem('bedroom', event)">เพิ่มรายการ</button></h2>
+        <ul id="bedroom">
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">เตียง - เลือกขนาดที่พอดีกับห้องและสบายในการนอน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">ตู้เสื้อผ้า - เก็บเสื้อผ้าและของใช้ส่วนตัว <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">โต๊ะเครื่องแป้ง - ใช้สำหรับแต่งหน้าและเก็บเครื่องสำอาง <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">โต๊ะข้างเตียง - วางโคมไฟหรือหนังสือ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">ผ้าปูที่นอน ผ้าห่ม - เลือกวัสดุที่ให้ความนุ่มสบาย <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bedroom')">กระจกแต่งตัว - เพิ่มแสงธรรมชาติและความลึกของห้อง <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+        </ul>
+
+        <h2 onclick="toggleList(this)">3. ห้องน้ำ <span class="percentage">0%</span> <button onclick="addItem('bathroom', event)">เพิ่มรายการ</button></h2>
+        <ul id="bathroom">
+            <li><input type="checkbox" onchange="updatePercentage('bathroom')">ตู้เก็บของในห้องน้ำ - เก็บของใช้ส่วนตัว <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bathroom')">กระจกติดผนัง - เพิ่มความสว่างและพื้นที่ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bathroom')">พรมเช็ดเท้า - ใช้เช็ดเท้าหลังอาบน้ำ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('bathroom')">ราวแขวนผ้า - ใช้แขวนผ้าเช็ดตัวและผ้าอื่น ๆ <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+        </ul>
+
+        <h2 onclick="toggleList(this)">4. ห้องครัว <span class="percentage">0%</span> <button onclick="addItem('kitchen', event)">เพิ่มรายการ</button></h2>
+        <ul id="kitchen">
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">โต๊ะอาหาร - เลือกขนาดที่เหมาะกับสมาชิกในครอบครัว <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">เก้าอี้ - ควรมีจำนวนที่พอเพียงสำหรับสมาชิก <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">ตู้เย็น - สำหรับเก็บอาหารสดและแช่แข็ง <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">ไมโครเวฟ - ใช้สำหรับอุ่นอาหาร <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">เตาอบ/เตาแก๊ส - สำหรับการปรุงอาหาร <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">เครื่องล้างจาน - ลดความยุ่งยากในการล้างจาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('kitchen')">อ่างล้างจาน - ควรมีขนาดพอเหมาะกับการใช้งาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+        </ul>
+
+        <h2 onclick="toggleList(this)">5. ห้องทำงาน <span class="percentage">0%</span> <button onclick="addItem('office', event)">เพิ่มรายการ</button></h2>
+        <ul id="office">
+            <li><input type="checkbox" onchange="updatePercentage('office')">โต๊ะทำงาน - เลือกขนาดที่เหมาะกับการทำงาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('office')">เก้าอี้ทำงาน - ควรมีความสะดวกสบายในการนั่งทำงาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('office')">ชั้นวางเอกสาร - สำหรับเก็บเอกสารและอุปกรณ์สำนักงาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+            <li><input type="checkbox" onchange="updatePercentage('office')">ไฟตั้งโต๊ะ - ให้แสงสว่างสำหรับการทำงาน <button class="remove-btn" onclick="removeItem(this)">ลบ</button></li>
+        </ul>
+    </div>
+
+    <div id="overall-percentage">เปอร์เซ็นต์รวม: 0%</div>
+
+    <script>
+        // JavaScript ที่เกี่ยวข้อง
+        function toggleList(header) {
+            const ul = header.nextElementSibling;
+            ul.classList.toggle('active');
+            header.classList.toggle('completed', ul.querySelectorAll('input[type="checkbox"]:checked').length === ul.querySelectorAll('input[type="checkbox"]').length);
+            updatePercentage(header.parentElement.id);
+        }
+
+        function updatePercentage(sectionId) {
+            const ul = document.getElementById(sectionId);
+            const totalItems = ul.querySelectorAll('li').length;
+            const checkedItems = ul.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percentage = totalItems === 0 ? 0 : (checkedItems / totalItems) * 100;
+            const percentageSpan = ul.previousElementSibling.querySelector('.percentage');
+            percentageSpan.textContent = `${Math.round(percentage)}%`;
+            updateOverallPercentage();
+        }
+
+        function updateOverallPercentage() {
+            const sections = document.querySelectorAll('ul');
+            let totalItems = 0;
+            let checkedItems = 0;
+            sections.forEach(section => {
+                totalItems += section.querySelectorAll('li').length;
+                checkedItems += section.querySelectorAll('input[type="checkbox"]:checked').length;
+            });
+            const overallPercentage = totalItems === 0 ? 0 : (checkedItems / totalItems) * 100;
+            document.getElementById('overall-percentage').textContent = `เปอร์เซ็นต์รวม: ${Math.round(overallPercentage)}%`;
+        }
+
+        function addItem(sectionId, event) {
+            event.stopPropagation(); // Prevent triggering the section's toggle function
+            const ul = document.getElementById(sectionId);
+            const newItemText = prompt("กรุณาใส่รายละเอียดรายการใหม่:");
+            if (newItemText) {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="checkbox" onchange="updatePercentage('${sectionId}')">${newItemText} <button class="remove-btn" onclick="removeItem(this)">ลบ</button>`;
+                ul.appendChild(li);
+                updatePercentage(sectionId); // Ensure percentage is updated after adding new item
+            }
+        }
+
+        function removeItem(button) {
+            const li = button.parentElement;
+            li.parentElement.removeChild(li);
+            updatePercentage(li.parentElement.id);
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* เพิ่มส่วนนี้ใน CSS ของคุณ */
+#overall-percentage {
+    position: fixed;
+    top: 20px; /* ระยะห่างจากด้านบนของหน้าเว็บ */
+    right: 20px; /* ระยะห่างจากด้านขวาของหน้าเว็บ */
+    background-color: #3f51b5; /* สีพื้นหลังของเปอร์เซ็นต์รวม */
+    color: white; /* สีของข้อความ */
+    padding: 10px 20px; /* ขนาดของ padding */
+    border-radius: 5px; /* มุมโค้งมน */
+    font-size: 1.2em; /* ขนาดของฟอนต์ */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เงาของกล่อง */
+}
+
+#overall-percentage span {
+    font-weight: bold; /* เน้นข้อความเปอร์เซ็นต์รวม */
+}
+button {
+    background-color: #4caf50; /* สีพื้นหลังของปุ่ม */
+    color: white; /* สีของข้อความในปุ่ม */
+    border: none; /* ไม่มีเส้นขอบ */
+    padding: 8px 16px; /* ขนาด padding */
+    border-radius: 5px; /* มุมโค้งมน */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อชี้ที่ปุ่ม */
+    font-size: 1em; /* ขนาดของฟอนต์ */
+    margin-left: 10px; /* ระยะห่างจากข้อความ */
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #388e3c; /* สีพื้นหลังเมื่อวางเมาส์ */
+}
+.remove-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #d32f2f;
+}
+.remove-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #d32f2f;
+}
